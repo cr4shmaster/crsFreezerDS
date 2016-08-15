@@ -38,19 +38,19 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.FREEZER = "Should Do Nicely"
 -- RECIPES --
 
 if swDLC then
- local freezer = Recipe("darkpylon", {
-  Ingredient("cutstone", 10),
-	Ingredient("gears", 3),
-	Ingredient("bluegem", 3),
- }, RECIPETABS.FARM, TECH.NONE, GLOBAL.RECIPE_GAME_TYPE.COMMON, "freezer_placer")
- freezer.atlas = "images/inventoryimages/freezer.xml"
+    local freezer = Recipe("darkpylon", {
+        Ingredient("cutstone", 10),
+        Ingredient("gears", 3),
+        Ingredient("bluegem", 3),
+    }, RECIPETABS.FARM, TECH.NONE, GLOBAL.RECIPE_GAME_TYPE.COMMON, "freezer_placer")
+    freezer.atlas = "images/inventoryimages/freezer.xml"
 else
- local freezer = Recipe("darkpylon", {
-  Ingredient("cutstone", 10),
-	Ingredient("gears", 3),
-	Ingredient("bluegem", 3),
- }, RECIPETABS.FARM, TECH.NONE, "freezer_placer")
- freezer.atlas = "images/inventoryimages/freezer.xml"
+    local freezer = Recipe("darkpylon", {
+        Ingredient("cutstone", 10),
+        Ingredient("gears", 3),
+        Ingredient("bluegem", 3),
+    }, RECIPETABS.FARM, TECH.NONE, "freezer_placer")
+    freezer.atlas = "images/inventoryimages/freezer.xml"
 end
 
 -- TINT --
@@ -98,7 +98,7 @@ local function freezerItemTest(inst, item, slot)
 	item:HasTag("foodclothing")
 end
 local function freezerItemTestUpdate(inst)
- inst.components.container.itemtestfn = freezerItemTest
+    inst.components.container.itemtestfn = freezerItemTest
 end
 AddPrefabPostInit("freezer", freezerItemTestUpdate)
 
