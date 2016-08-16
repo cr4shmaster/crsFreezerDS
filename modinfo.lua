@@ -4,11 +4,13 @@
 -- Afro1967: http://steamcommunity.com/profiles/76561197989646930
 -- New version author:
 -- cr4shmaster: http://steamcommunity.com/id/cr4shmaster
+-- New textures by:
+-- Globalastick: http://steamcommunity.com/id/globalastick
 
 name = "Freezer 2.0"
 description = "Nice!"
 author = "cr4shmaster"
-version = "2.0.4"
+version = "2.0.4.1"
 forumthread = ""
 api_version = 6
 dont_starve_compatible = true
