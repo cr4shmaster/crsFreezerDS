@@ -10,7 +10,7 @@
 name = "Freezer 2.0"
 description = "Nice!"
 author = "cr4shmaster"
-version = "2.0.4.1"
+version = "2.0.4.2"
 forumthread = ""
 api_version = 6
 dont_starve_compatible = true
