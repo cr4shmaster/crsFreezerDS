@@ -8,7 +8,7 @@
 name = "Freezer 2.0"
 description = "Nice!"
 author = "cr4shmaster"
-version = "2.0.2"
+version = "2.0.3"
 forumthread = ""
 api_version = 6
 dont_starve_compatible = true
@@ -75,8 +75,37 @@ local crsPosition = {
     {description = "-500", data = -500},
 }
 
-configuration_options =
-{
+configuration_options = {
+    {
+        name = "cfgRecipeTab",
+        label = "Recipe Tab",
+        options = {
+            {description = "Tools", data = 1},
+            {description = "Survival", data = 2},
+            {description = "Farm", data = 3},
+            {description = "Science", data = 4},
+            {description = "Structures", data = 5},
+            {description = "Refine", data = 6},
+            {description = "Magic", data = 7},
+            {description = "Ancient", data = 8},
+        },
+        default = 1,
+    },
+    {
+        name = "cfgRecipeTech",
+        label = "Recipe Tech",
+        options = {
+            {description = "None", data = 1},
+            {description = "Science Machine", data = 2},
+            {description = "Alchemy Engine", data = 3},
+            {description = "Prestihatitator", data = 4},
+            {description = "Shadow Manip.", data = 5},
+            {description = "Broken APS", data = 6},
+            {description = "Repaired APS", data = 7},
+            {description = "Obs. Workbench", data = 8},
+        },
+        default = 5,
+    },
 	{
 		name = "cfgPerishMult",
 		label = "Perish Time",

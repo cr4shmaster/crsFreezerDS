@@ -37,19 +37,43 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.FREEZER = "Should Do Nicely"
 
 -- RECIPES --
 
+local crsRecipeTabs = {
+    RECIPETABS.TOOLS,
+    RECIPETABS.SURVIVAL,
+    RECIPETABS.FARM,
+    RECIPETABS.SCIENCE,
+    RECIPETABS.TOWN,
+    RECIPETABS.REFINE,
+    RECIPETABS.MAGIC,
+    RECIPETABS.ANCIENT,
+}
+local recipeTab = crsRecipeTabs[getConfig("cfgRecipeTab")]
+
+local crsRecipeTechs = {
+    TECH.NONE,
+    TECH.SCIENCE_ONE, -- Science Machine
+    TECH.SCIENCE_TWO, -- Alchemy Engine
+    TECH.MAGIC_TWO, -- Prestihatitator
+    TECH.MAGIC_THREE, -- Shadow Manipulator
+    TECH.ANCIENT_TWO, -- Broken APS
+    TECH.ANCIENT_FOUR, -- Repaired APS
+    TECH.OBSIDIAN_TWO, -- Obsidian Workbench
+}
+local recipeTech = crsRecipeTechs[getConfig("cfgRecipeTech")]
+
 if swDLC then
-    local freezer = Recipe("darkpylon", {
+    local freezer = Recipe("freezer", {
         Ingredient("cutstone", 10),
         Ingredient("gears", 3),
         Ingredient("bluegem", 3),
-    }, RECIPETABS.FARM, TECH.NONE, GLOBAL.RECIPE_GAME_TYPE.COMMON, "freezer_placer")
+    }, recipeTab, recipeTech, GLOBAL.RECIPE_GAME_TYPE.COMMON, "freezer_placer")
     freezer.atlas = "images/inventoryimages/freezer.xml"
 else
-    local freezer = Recipe("darkpylon", {
+    local freezer = Recipe("freezer", {
         Ingredient("cutstone", 10),
         Ingredient("gears", 3),
         Ingredient("bluegem", 3),
-    }, RECIPETABS.FARM, TECH.NONE, "freezer_placer")
+    }, recipeTab, recipeTech, "freezer_placer")
     freezer.atlas = "images/inventoryimages/freezer.xml"
 end
 
