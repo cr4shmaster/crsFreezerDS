@@ -63,16 +63,16 @@ local recipeTech = crsRecipeTechs[getConfig("cfgRecipeTech")]
 
 if swDLC then
     local freezer = Recipe("freezer", {
-        Ingredient("cutstone", 10),
-        Ingredient("gears", 3),
-        Ingredient("bluegem", 3),
+        Ingredient("cutstone", getConfig("cfgFStones")),
+        Ingredient("gears", getConfig("cfgFGears")),
+        Ingredient("bluegem", getConfig("cfgFGems")),
     }, recipeTab, recipeTech, GLOBAL.RECIPE_GAME_TYPE.COMMON, "freezer_placer")
     freezer.atlas = "images/inventoryimages/freezer.xml"
 else
     local freezer = Recipe("freezer", {
-        Ingredient("cutstone", 10),
-        Ingredient("gears", 3),
-        Ingredient("bluegem", 3),
+        Ingredient("cutstone", getConfig("cfgFStones")),
+        Ingredient("gears", getConfig("cfgFGears")),
+        Ingredient("bluegem", getConfig("cfgFGems")),
     }, recipeTab, recipeTech, "freezer_placer")
     freezer.atlas = "images/inventoryimages/freezer.xml"
 end

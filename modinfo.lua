@@ -1,16 +1,14 @@
 -- The Freezer keeps your food fresh or frozen and produces ice.
 
--- Original author:
--- Afro1967: http://steamcommunity.com/profiles/76561197989646930
--- New version author:
--- cr4shmaster: http://steamcommunity.com/id/cr4shmaster
--- New textures by:
--- Globalastick: http://steamcommunity.com/id/globalastick
+-- Workshop Page: http://steamcommunity.com/sharedfiles/filedetails/?id=744033689
+-- Original author: Afro1967: http://steamcommunity.com/profiles/76561197989646930
+-- New version author: cr4shmaster: http://steamcommunity.com/id/cr4shmaster
+-- New textures by: Globalastick: http://steamcommunity.com/id/globalastick
 
 name = "Freezer 2.0"
 description = "Nice!"
 author = "cr4shmaster"
-version = "2.0.4.2"
+version = "2.0.5"
 forumthread = ""
 api_version = 6
 dont_starve_compatible = true
@@ -32,7 +30,15 @@ local crsCount = {
     {description = "4", data = 4},
     {description = "5", data = 5},
 }
-
+local crsIngredient = {
+    {description = "1", data = 1},
+    {description = "2", data = 2},
+    {description = "3", data = 3},
+    {description = "5", data = 5},
+    {description = "10", data = 10},
+    {description = "15", data = 15},
+    {description = "20", data = 20},
+}
 local crsPosition = {
     {description = "500", data = 500},
     {description = "475", data = 475},
@@ -107,6 +113,24 @@ configuration_options = {
             {description = "Obs. Workbench", data = 8},
         },
         default = 5,
+    },
+    {
+        name = "cfgFStones",
+        label = "Cutsones",
+        options = crsIngredient,
+        default = 5,
+    },
+    {
+        name = "cfgFGears",
+        label = "Gears",
+        options = crsIngredient,
+        default = 2,
+    },
+    {
+        name = "cfgFGems",
+        label = "Blue Gems",
+        options = crsIngredient,
+        default = 2,
     },
 	{
 		name = "cfgPerishMult",
