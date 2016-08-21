@@ -1,18 +1,12 @@
 require "prefabutil"
 
-local assets = {
-	Asset("ANIM", "anim/freezer.zip"),
-	Asset("ANIM", "anim/ui_chest_3x3.zip"),
-}
-
 getConfig = GetModConfigData
+local crsFreezerDS = getConfig("cfgTestCheck", "workshop-744033689") and "workshop-744033689" or "crsFreezerDS"
+local oldAnim = getConfig("cfgOldAnim", crsFreezerDS)
 
-local crsFreezerDS = nil
-if getConfig("cfgTestCheck", "workshop-744033689") then
- crsFreezerDS = "workshop-744033689"
-else
- crsFreezerDS = "crsFreezerDS"
-end
+local assets = {
+    Asset("ANIM", oldAnim and "anim/old/freezer.zip" or "anim/freezer.zip"),
+}
 
 local function onhammered(inst, worker)
     inst.components.lootdropper:DropLoot()
@@ -66,8 +60,8 @@ local function fn(Sim)
 
 
     inst:AddComponent("container")
-    inst.components.container.widgetanimbank = "ui_chest_3x3"
-    inst.components.container.widgetanimbuild = "ui_chest_3x3"
+    inst.components.container.widgetanimbank = nil
+    inst.components.container.widgetanimbuild = nil
     inst.components.container.side_align_tip = 160 
 
     if (IsDLCEnabled(REIGN_OF_GIANTS)) then

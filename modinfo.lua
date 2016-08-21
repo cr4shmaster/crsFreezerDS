@@ -8,7 +8,7 @@
 name = "Freezer 2.0"
 description = "Nice!"
 author = "cr4shmaster"
-version = "2.0.5"
+version = "2.0.8"
 forumthread = ""
 api_version = 6
 dont_starve_compatible = true
@@ -84,6 +84,15 @@ local crsPosition = {
 }
 
 configuration_options = {
+    {
+        name = "cfgOldAnim",
+        label = "Old Textures",
+        options = {
+            {description = "Yes", data = true},
+            {description = "No", data = false},
+        },
+        default = false,
+    },
     {
         name = "cfgRecipeTab",
         label = "Recipe Tab",

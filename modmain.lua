@@ -2,11 +2,14 @@ PrefabFiles = {
     "freezer",
 }
 
+getConfig = GetModConfigData
+local oldAnim = getConfig("cfgOldAnim")
+
 Assets = {
     Asset("ATLAS", "images/inventoryimages/ui_freezer_3x4.xml"),
-    Asset("ATLAS", "images/inventoryimages/freezer.xml"),
-    Asset("IMAGE", "minimap/freezer.tex"),
-    Asset("ATLAS", "minimap/freezer.xml"),
+    Asset("ATLAS", oldAnim and "images/inventoryimages/old/freezer.xml" or "images/inventoryimages/freezer.xml"),
+    Asset("IMAGE", oldAnim and "minimap/old/freezer.tex" or "minimap/freezer.tex"),
+    Asset("ATLAS", oldAnim and "minimap/old/freezer.xml" or "minimap/freezer.xml"),
 }
 
 STRINGS = GLOBAL.STRINGS
@@ -16,7 +19,6 @@ Ingredient = GLOBAL.Ingredient
 TECH = GLOBAL.TECH
 Vector3 = GLOBAL.Vector3
 IsDLCEnabled = GLOBAL.IsDLCEnabled
-getConfig = GetModConfigData
 RoG = GLOBAL.REIGN_OF_GIANTS
 SW = GLOBAL.CAPY_DLC
 
@@ -27,7 +29,7 @@ local swDLC = IsDLCEnabled(SW)
 
 -- MAP ICONS --
 
-AddMinimapAtlas("minimap/freezer.xml")
+AddMinimapAtlas(oldAnim and "minimap/old/freezer.xml" or "minimap/freezer.xml")
 
 -- STRINGS --
 
@@ -61,21 +63,15 @@ local crsRecipeTechs = {
 }
 local recipeTech = crsRecipeTechs[getConfig("cfgRecipeTech")]
 
-if swDLC then
-    local freezer = Recipe("freezer", {
-        Ingredient("cutstone", getConfig("cfgFStones")),
-        Ingredient("gears", getConfig("cfgFGears")),
-        Ingredient("bluegem", getConfig("cfgFGems")),
-    }, recipeTab, recipeTech, GLOBAL.RECIPE_GAME_TYPE.COMMON, "freezer_placer")
-    freezer.atlas = "images/inventoryimages/freezer.xml"
-else
-    local freezer = Recipe("freezer", {
-        Ingredient("cutstone", getConfig("cfgFStones")),
-        Ingredient("gears", getConfig("cfgFGears")),
-        Ingredient("bluegem", getConfig("cfgFGems")),
-    }, recipeTab, recipeTech, "freezer_placer")
-    freezer.atlas = "images/inventoryimages/freezer.xml"
-end
+local ingredients = {
+    Ingredient("cutstone", getConfig("cfgFStones")),
+    Ingredient("gears", getConfig("cfgFGears")),
+    Ingredient("bluegem", getConfig("cfgFGems")),
+}
+
+local freezer = swDLC and Recipe("freezer", ingredients, recipeTab, recipeTech, GLOBAL.RECIPE_GAME_TYPE.COMMON, "freezer_placer")
+                or Recipe("freezer", ingredients, recipeTab, recipeTech, "freezer_placer")
+freezer.atlas = (oldAnim and "images/inventoryimages/old/freezer.xml" or "images/inventoryimages/freezer.xml")
 
 -- TINT --
 
