@@ -17,3 +17,7 @@ To install this mod you simply have to subscribe on the Steam Workshop and it wi
 If your game crashes in the mod menu, try disabling __Small Textures__ in the game's settings.</br>
 If you have any suggestions, feel free to post them in the comment section on the Workshop page.
 
+### Suggestions:
+- [x] Restore original textures. - *Made it configurable; you can choose to use the textures that you like better.*
+- [ ] Add some sort of penalty (i.e. food is frozen and can't be used for a while).
+
