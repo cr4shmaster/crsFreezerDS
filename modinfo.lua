@@ -1,14 +1,9 @@
--- The Freezer keeps your food fresh or frozen and produces ice.
+-- More information here: https://sites.google.com/view/cr4shmaster/freezer-ds-dst
 
--- Workshop Page: http://steamcommunity.com/sharedfiles/filedetails/?id=744033689
--- Original author: Afro1967: http://steamcommunity.com/profiles/76561197989646930
--- New version author: cr4shmaster: http://steamcommunity.com/id/cr4shmaster
--- New textures by: Globalastick: http://steamcommunity.com/id/globalastick
-
-name = "Freezer 2.0"
+name = "Freezer 2.0.8.2"
 description = "Nice!"
 author = "cr4shmaster"
-version = "2.0.8.1"
+version = "2.0.8.2"
 forumthread = ""
 api_version = 6
 dont_starve_compatible = true
