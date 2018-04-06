@@ -1,15 +1,12 @@
 PrefabFiles = {
-    "freezer",
+    "icebox_v2",
 }
 
-getConfig = GetModConfigData
-local oldAnim = getConfig("cfgOldAnim")
-
 Assets = {
-    Asset("ATLAS", "images/inventoryimages/ui_freezer_3x4.xml"),
-    Asset("ATLAS", oldAnim and "images/inventoryimages/old/freezer.xml" or "images/inventoryimages/freezer.xml"),
-    Asset("IMAGE", oldAnim and "minimap/old/freezer.tex" or "minimap/freezer.tex"),
-    Asset("ATLAS", oldAnim and "minimap/old/freezer.xml" or "minimap/freezer.xml"),
+    Asset("ATLAS", "images/inventoryimages/ui_icebox_v2_3x4.xml"),
+    Asset("ATLAS", "images/inventoryimages/icebox_v2.xml"),
+    Asset("IMAGE", "minimap/icebox_v2.tex"),
+    Asset("ATLAS", "minimap/icebox_v2.xml"),
 }
 
 STRINGS = GLOBAL.STRINGS
@@ -21,6 +18,7 @@ Vector3 = GLOBAL.Vector3
 IsDLCEnabled = GLOBAL.IsDLCEnabled
 RoG = GLOBAL.REIGN_OF_GIANTS
 SW = GLOBAL.CAPY_DLC
+getConfig = GetModConfigData
 
 -- local noDLC = not IsDLCEnabled(RoG) and not IsDLCEnabled(SW)
 -- local anyDLC = IsDLCEnabled(RoG) or IsDLCEnabled(SW)
@@ -29,13 +27,13 @@ local swDLC = IsDLCEnabled(SW)
 
 -- MAP ICONS --
 
-AddMinimapAtlas(oldAnim and "minimap/old/freezer.xml" or "minimap/freezer.xml")
+AddMinimapAtlas("minimap/icebox_v2.xml")
 
 -- STRINGS --
 
-STRINGS.NAMES.FREEZER = "Freezer"
-STRINGS.RECIPE_DESC.FREEZER = "Nice!"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.FREEZER = "Should Do Nicely"
+STRINGS.NAMES.ICEBOX_V2 = "Icebox"
+STRINGS.RECIPE_DESC.ICEBOX_V2 = "Kewl!"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.ICEBOX_V2 = "A better Icebox."
 
 -- RECIPES --
 
@@ -69,9 +67,9 @@ local ingredients = {
     Ingredient("bluegem", getConfig("cfgFGems")),
 }
 
-local freezer = swDLC and Recipe("freezer", ingredients, recipeTab, recipeTech, GLOBAL.RECIPE_GAME_TYPE.COMMON, "freezer_placer")
-                or Recipe("freezer", ingredients, recipeTab, recipeTech, "freezer_placer")
-freezer.atlas = (oldAnim and "images/inventoryimages/old/freezer.xml" or "images/inventoryimages/freezer.xml")
+local icebox_v2 = swDLC and Recipe("icebox_v2", ingredients, recipeTab, recipeTech, GLOBAL.RECIPE_GAME_TYPE.COMMON, "icebox_v2_placer")
+                or Recipe("icebox_v2", ingredients, recipeTab, recipeTech, "icebox_v2_placer")
+icebox_v2.atlas = (oldAnim and "images/inventoryimages/old/icebox_v2.xml" or "images/inventoryimages/icebox_v2.xml")
 
 -- TINT --
 
@@ -86,7 +84,7 @@ AddClassPostConstruct("widgets/invslot", crsImageTintUpdate)
 
 local crsWidgetPosition = Vector3(getConfig("cfgXPos"),getConfig("cfgYPos"),0) -- background image position
 
-AddPrefabPostInit("freezer", function(inst)
+AddPrefabPostInit("icebox_v2", function(inst)
     local slotpos = {}
     for y = 3, 0, -1 do
         for x = 0, 2 do
@@ -95,8 +93,8 @@ AddPrefabPostInit("freezer", function(inst)
     end
     inst.components.container:SetNumSlots(#slotpos)
     inst.components.container.widgetslotpos = slotpos
-    inst.components.container.widgetbgimage = "ui_freezer_3x4.tex"
-    inst.components.container.widgetbgatlas = "images/inventoryimages/ui_freezer_3x4.xml"
+    inst.components.container.widgetbgimage = "ui_icebox_v2_3x4.tex"
+    inst.components.container.widgetbgatlas = "images/inventoryimages/ui_icebox_v2_3x4.xml"
     inst.components.container.widgetpos = crsWidgetPosition
 	inst.components.container.widgetbgimagetint = {r=.44,g=.74,b=1,a=1}
     inst.components.container.side_align_tip = 160
@@ -104,7 +102,7 @@ end)
 
 -- ITEM TEST --
 
-local function freezerItemTest(inst, item, slot)
+local function icebox_v2ItemTest(inst, item, slot)
 	return (item.components.edible and item.components.perishable) or 
 	item.prefab == "spoiled_food" or 
 	item.prefab == "heatrock" or 
@@ -117,10 +115,10 @@ local function freezerItemTest(inst, item, slot)
 	item:HasTag("frozen") or
 	item:HasTag("foodclothing")
 end
-local function freezerItemTestUpdate(inst)
-    inst.components.container.itemtestfn = freezerItemTest
+local function icebox_v2ItemTestUpdate(inst)
+    inst.components.container.itemtestfn = icebox_v2ItemTest
 end
-AddPrefabPostInit("freezer", freezerItemTestUpdate)
+AddPrefabPostInit("icebox_v2", icebox_v2ItemTestUpdate)
 
 -- ON OPEN/CLOSED --
 
@@ -136,7 +134,7 @@ local function crsOnClose(inst)
     inst.Light:Enable(false)
 end
 
-AddPrefabPostInit("freezer", function(inst)
+AddPrefabPostInit("icebox_v2", function(inst)
     inst.components.container.onopenfn = crsOnOpen
     inst.components.container.onclosefn = crsOnClose
 end)
