@@ -1,12 +1,12 @@
 PrefabFiles = {
-    "icebox_v2",
+    "newicebox",
 }
 
 Assets = {
-    Asset("ATLAS", "images/inventoryimages/ui_icebox_v2_3x4.xml"),
-    Asset("ATLAS", "images/inventoryimages/icebox_v2.xml"),
-    Asset("IMAGE", "minimap/icebox_v2.tex"),
-    Asset("ATLAS", "minimap/icebox_v2.xml"),
+    Asset("ATLAS", "images/inventoryimages/ui_newicebox_3x4.xml"),
+    Asset("ATLAS", "images/inventoryimages/newicebox.xml"),
+    Asset("IMAGE", "minimap/newicebox.tex"),
+    Asset("ATLAS", "minimap/newicebox.xml"),
 }
 
 STRINGS = GLOBAL.STRINGS
@@ -27,13 +27,13 @@ local swDLC = IsDLCEnabled(SW)
 
 -- MAP ICONS --
 
-AddMinimapAtlas("minimap/icebox_v2.xml")
+AddMinimapAtlas("minimap/newicebox.xml")
 
 -- STRINGS --
 
-STRINGS.NAMES.ICEBOX_V2 = "Icebox"
-STRINGS.RECIPE_DESC.ICEBOX_V2 = "Kewl!"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.ICEBOX_V2 = "A better Icebox."
+STRINGS.NAMES.NEWICEBOX = "New Icebox"
+STRINGS.RECIPE_DESC.NEWICEBOX = "Kewl!"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.NEWICEBOX = "A better Icebox."
 
 -- RECIPES --
 
@@ -67,9 +67,9 @@ local ingredients = {
     Ingredient("bluegem", getConfig("cfgFGems")),
 }
 
-local icebox_v2 = swDLC and Recipe("icebox_v2", ingredients, recipeTab, recipeTech, GLOBAL.RECIPE_GAME_TYPE.COMMON, "icebox_v2_placer")
-                or Recipe("icebox_v2", ingredients, recipeTab, recipeTech, "icebox_v2_placer")
-icebox_v2.atlas = (oldAnim and "images/inventoryimages/old/icebox_v2.xml" or "images/inventoryimages/icebox_v2.xml")
+local newicebox = swDLC and Recipe("newicebox", ingredients, recipeTab, recipeTech, GLOBAL.RECIPE_GAME_TYPE.COMMON, "newicebox_placer")
+                or Recipe("newicebox", ingredients, recipeTab, recipeTech, "newicebox_placer")
+newicebox.atlas = (oldAnim and "images/inventoryimages/old/newicebox.xml" or "images/inventoryimages/newicebox.xml")
 
 -- TINT --
 
@@ -84,7 +84,7 @@ AddClassPostConstruct("widgets/invslot", crsImageTintUpdate)
 
 local crsWidgetPosition = Vector3(getConfig("cfgXPos"),getConfig("cfgYPos"),0) -- background image position
 
-AddPrefabPostInit("icebox_v2", function(inst)
+AddPrefabPostInit("newicebox", function(inst)
     local slotpos = {}
     for y = 3, 0, -1 do
         for x = 0, 2 do
@@ -93,8 +93,8 @@ AddPrefabPostInit("icebox_v2", function(inst)
     end
     inst.components.container:SetNumSlots(#slotpos)
     inst.components.container.widgetslotpos = slotpos
-    inst.components.container.widgetbgimage = "ui_icebox_v2_3x4.tex"
-    inst.components.container.widgetbgatlas = "images/inventoryimages/ui_icebox_v2_3x4.xml"
+    inst.components.container.widgetbgimage = "ui_newicebox_3x4.tex"
+    inst.components.container.widgetbgatlas = "images/inventoryimages/ui_newicebox_3x4.xml"
     inst.components.container.widgetpos = crsWidgetPosition
 	inst.components.container.widgetbgimagetint = {r=.44,g=.74,b=1,a=1}
     inst.components.container.side_align_tip = 160
@@ -102,7 +102,7 @@ end)
 
 -- ITEM TEST --
 
-local function icebox_v2ItemTest(inst, item, slot)
+local function newiceboxItemTest(inst, item, slot)
 	return (item.components.edible and item.components.perishable) or 
 	item.prefab == "spoiled_food" or 
 	item.prefab == "heatrock" or 
@@ -115,10 +115,10 @@ local function icebox_v2ItemTest(inst, item, slot)
 	item:HasTag("frozen") or
 	item:HasTag("foodclothing")
 end
-local function icebox_v2ItemTestUpdate(inst)
-    inst.components.container.itemtestfn = icebox_v2ItemTest
+local function newiceboxItemTestUpdate(inst)
+    inst.components.container.itemtestfn = newiceboxItemTest
 end
-AddPrefabPostInit("icebox_v2", icebox_v2ItemTestUpdate)
+AddPrefabPostInit("newicebox", newiceboxItemTestUpdate)
 
 -- ON OPEN/CLOSED --
 
@@ -134,7 +134,7 @@ local function crsOnClose(inst)
     inst.Light:Enable(false)
 end
 
-AddPrefabPostInit("icebox_v2", function(inst)
+AddPrefabPostInit("newicebox", function(inst)
     inst.components.container.onopenfn = crsOnOpen
     inst.components.container.onclosefn = crsOnClose
 end)

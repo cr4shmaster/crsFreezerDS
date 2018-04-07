@@ -1,10 +1,10 @@
 require "prefabutil"
 
 getConfig = GetModConfigData
-local crsIceboxv2DS = getConfig("cfgTestCheck", "workshop-744033689") and "workshop-744033689" or "crsIceboxv2DS"
+local crsNewIceboxDS = getConfig("cfgTestCheck", "workshop-744033689") and "workshop-744033689" or "crsNewIceboxDS"
 
 local assets = {
-    Asset("ANIM", "anim/icebox_v2.zip"),
+    Asset("ANIM", "anim/newicebox.zip"),
 }
 
 local function onhammered(inst, worker)
@@ -36,15 +36,15 @@ local function fn(Sim)
 	inst.entity:AddSoundEmitter()
     
 	--inst:AddTag("fridge")
-	inst:AddTag("icebox_v2")
+	inst:AddTag("newicebox")
     
     inst:AddTag("crsCustomPerishMult")
-    inst.crsCustomPerishMult = getConfig("cfgPerishMult", crsIceboxv2DS)
+    inst.crsCustomPerishMult = getConfig("cfgPerishMult", crsNewIceboxDS)
     inst:AddTag("crsCustomTempDuration")
-    inst.crsCustomTempDuration = getConfig("cfgTempDuration", crsIceboxv2DS)
+    inst.crsCustomTempDuration = getConfig("cfgTempDuration", crsNewIceboxDS)
     
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon("icebox_v2.tex")
+	minimap:SetIcon("newicebox.tex")
 	
     inst.AnimState:SetBank("freezer")
     inst.AnimState:SetBuild("freezer")
@@ -65,7 +65,7 @@ local function fn(Sim)
 
     if (IsDLCEnabled(REIGN_OF_GIANTS)) then
         inst:AddComponent("harvestable")
-        inst.components.harvestable:SetUp("ice", 1, 30 * getConfig("cfgIcePerDay", crsIceboxv2DS))
+        inst.components.harvestable:SetUp("ice", 1, 30 * getConfig("cfgIcePerDay", crsNewIceboxDS))
     end
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = function(inst)
@@ -85,5 +85,5 @@ local function fn(Sim)
     return inst
 end
 
-return Prefab( "common/icebox_v2", fn, assets),
-       MakePlacer("common/icebox_v2_placer", "freezer", "freezer", "closed")
+return Prefab( "common/newicebox", fn, assets),
+       MakePlacer("common/newicebox_placer", "freezer", "freezer", "closed")

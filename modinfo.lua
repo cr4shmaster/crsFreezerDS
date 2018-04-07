@@ -1,9 +1,9 @@
--- More information here: https://sites.google.com/view/cr4shmaster/icebox-v2-ds-dst
+-- More information here: https://sites.google.com/view/cr4shmaster/new-icebox-ds-dst
 
-name = "Icebox 2.0.8.3"
+name = "New Icebox v2.0.8.4"
 description = "Nice!"
 author = "cr4shmaster"
-version = "2.0.8.3"
+version = "2.0.8.4"
 forumthread = ""
 api_version = 6
 dont_starve_compatible = true
