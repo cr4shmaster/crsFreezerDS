@@ -3,7 +3,7 @@
 name = "New Icebox v2.0.8.4"
 description = "Nice!"
 author = "cr4shmaster"
-version = "2.0.8.4"
+version = "2.0.8.4.2"
 forumthread = ""
 api_version = 6
 dont_starve_compatible = true
@@ -111,7 +111,7 @@ configuration_options = {
     },
     {
         name = "cfgFStones",
-        label = "Cutsones",
+        label = "Cut Stones",
         options = crsIngredient,
         default = 5,
     },
@@ -135,7 +135,7 @@ configuration_options = {
             {description = "25% longer", data = .37},
             {description = "50% longer", data = .25},
             {description = "75% longer", data = .12},
-            {description = "None", data = 0},
+            {description = "Forever", data = 0},
         },
 		default = .25,
 	},
@@ -153,7 +153,7 @@ configuration_options = {
     },
     {
         name = "cfgTempDuration",
-        label = "Temp Duration",
+        label = "Cooling Rate",
         options = crsCount,
         default = -1,
     },
